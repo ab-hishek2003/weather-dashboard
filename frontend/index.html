@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon Premium Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 4K FIXED BACKGROUND STREAM CONTAINER -->
+    <div class="video-wrapper">
+        <video autoplay loop muted playsinline id="bgVideo">
+            <source src="weather-bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- THEATRICAL LIGHT INTERFACE CONTAINER (No background bounding box) -->
+    <div class="app-container">
+        
+        <header class="brand-header">
+            <img id="appLogo" src="cloud-logo.png" alt="Cloud Logo">
+            <h1 class="animate-title">Atmosphere Made Real.</h1>
+            <p class="animate-tagline">Stream real-time global microclimate coordinates instantly.</p>
+        </header>
+
+        <!-- SQUARESAPCE-INSPIRED MINIMALIST SEARCH LINE -->
+        <form id="weatherForm" class="animate-form">
+            <div class="search-input-wrapper">
+                <input type="text" id="cityInput" placeholder="Explore a city profile..." required>
+                <span class="input-underline"></span>
+            </div>
+            <button type="submit" class="squarespace-btn">Find</button>
+        </form>
+
+        <!-- DATA DISPLAY INTERFACE (Sleek and typography-focused) -->
+        <main id="weatherDisplay" class="weather-card hidden">
+            <div class="location-box">
+                <h2 id="cityName">London, UK</h2>
+                <p id="weatherDate">Monday, August 17, 2026</p>
+            </div>
+            
+            <div class="temp-box">
+                <img id="weatherIcon" src="" alt="Condition Icon">
+                <h3 id="temperature">24°C</h3>
+                <p id="description" class="description">Scattered Clouds</p>
+            </div>
+
+            <div class="details-grid">
+                <div class="detail-item">
+                    <span>Humidity</span>
+                    <strong id="humidity">62%</strong>
+                </div>
+                <div class="detail-item">
+                    <span>Wind Speed</span>
+                    <strong id="windSpeed">12 km/h</strong>
+                </div>
+            </div>
+        </main>
+
+        <div id="statusMessage" class="status-text"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

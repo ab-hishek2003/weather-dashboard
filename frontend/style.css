@@ -1,0 +1,280 @@
+/* ==========================================================================
+   1. GLOBAL DOCUMENT RESET & OVERLAYS
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0d0f14;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 4K Video Scaling Engine */
+.video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+}
+
+#bgVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Luxury Matte Dark Film Tint */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(13, 15, 20, 0.4) 0%, rgba(13, 15, 20, 0.65) 100%);
+    z-index: -1;
+}
+
+/* ==========================================================================
+   2. MAIN CONTAINER ARCHITECTURE (Zero box boundaries)
+   ========================================================================== */
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    text-align: center;
+    background: transparent; /* Absolutely no square box border wrapper */
+    border: none;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   3. BRAND ELEMENT TYPOGRAPHY
+   ========================================================================== */
+#appLogo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    mix-blend-mode: multiply; /* Blends flat whites into your video background stream */
+}
+
+.animate-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.animate-tagline {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    margin-bottom: 3.5rem;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   4. THE SQUARESPACE INTERFACE: MINIMALIST SEARCH & BUTTON
+   ========================================================================== */
+.animate-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    width: 100%;
+}
+
+/* Borderless Floating Input Container */
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+}
+
+.animate-form input {
+    width: 100%;
+    padding: 0.85rem 0.5rem;
+    background: transparent; /* No blocky input boundaries */
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Ultra-thin minimalist underline */
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.4s ease;
+}
+
+.animate-form input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* Interactive Border Accent Line Expansion */
+.input-underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: #ffffff;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.animate-form input:focus ~ .input-underline {
+    width: 100%;
+    left: 0;
+}
+
+/* High-End Squarespace Styled Button */
+.squarespace-btn {
+    padding: 0.85rem 2.2rem;
+    background-color: #ffffff; /* Classic crisp contrast fill */
+    border: 1px solid #ffffff;
+    color: #0d0f14;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Sophisticated presentation standard */
+    border-radius: 0px; /* Sharp professional edges instead of pill-shaped bubbles */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.squarespace-btn:hover {
+    background-color: transparent; /* Translucent inverse ghost switch effect on hover */
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   5. WEATHER DISPLAY CANVAS (Typography Centric)
+   ========================================================================== */
+.weather-card {
+    animation: fadeInBlur 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.location-box h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.location-box p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 0.3rem;
+}
+
+.temp-box {
+    margin: 1.5rem 0;
+}
+
+#weatherIcon {
+    width: 90px;
+    height: auto;
+}
+
+.temp-box h3 {
+    font-size: 5rem;
+    font-weight: 200; /* Sophisticated light font weight typography profile */
+    line-height: 1;
+}
+
+.temp-box .description {
+    font-size: 1.15rem;
+    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-top: 0.4rem;
+}
+
+/* Minimalist Clean Grid Tracking Columns */
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 450px;
+    margin: 2.5rem auto 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 2rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.detail-item span {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.3rem;
+}
+
+.detail-item strong {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   6. TECHNICAL STATES & HELPER LAYOUTS
+   ========================================================================== */
+.hidden {
+    display: none !important;
+}
+
+.status-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+@keyframes fadeInBlur {
+    0% { opacity: 0; filter: blur(5px); transform: translateY(10px); }
+    100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* Fluid Mobile Adaptation Configuration */
+@media (max-width: 500px) {
+    .animate-form {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .search-input-wrapper {
+        width: 100%;
+    }
+    .squarespace-btn {
+        width: 100%;
+    }
+    .animate-title {
+        font-size: 2.2rem;
+    }
+}
